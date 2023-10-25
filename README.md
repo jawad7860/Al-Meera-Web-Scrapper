@@ -14,9 +14,20 @@ Before you start, make sure you have the following installed:
 
 - Python (3.x recommended)
 - Scrapy
-- Other project-specific dependencies (if any)
+
 
 You can install Scrapy and other dependencies using pip:
 
 ```bash
 pip install scrapy
+
+### Running the project
+
+```bash
+scrapy crawl almeera_spider -o data.jl
+This will store the data scrapped in data.jl. Then run following command for transformation into more organized structure and downloading images.
+```bash
+python convo.py
+
+
+
