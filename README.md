@@ -18,7 +18,7 @@ Before you start, make sure you have the following installed:
 
 You can install Scrapy and other dependencies using pip:
 
-      ```bash
+    ```bash
             pip install scrapy
 
 ### Running the project
