@@ -55,6 +55,7 @@ class AlmeeraSpider(scrapy.Spider):
                 
                 Nextpage = subcategory_url+ "?pageId=2"
                 yield scrapy.Request(url=Nextpage, callback=self.parse_subcategory, cb_kwargs={'subcategory_data': subcategory_data})
+                
 
                 almeera_item['Subcategories'].append(subcategory_data)
                 itr2 += 1  # Increment the iterator for the next subcategory
@@ -82,6 +83,8 @@ class AlmeeraSpider(scrapy.Spider):
                     img_srcset = product_items.css('div img::attr(srcset)').get()
                 img_alt = product_items.css('div img::attr(alt)').get()
                 price = product_items.css('span.price.product-price::text').get()
+                sku = response.css('div.segment-product-data::attr(data-segment-data)').re_first(r'"sku":"([^"]+)"')
+
 
             
 
@@ -89,8 +92,11 @@ class AlmeeraSpider(scrapy.Spider):
                 product_item2['ItemTitle'] = img_alt,
                 product_item2['ItemImageURL'] = img_srcset
                 product_item2['ItemPrice'] = price
+                product_item2['ItemBarcode'] = sku
+
 
                 subcategory_data['Products'].append(product_item2)
                 yield subcategory_data
+
 
 

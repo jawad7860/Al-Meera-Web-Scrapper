@@ -13,6 +13,7 @@ class ProductItem(scrapy.Item):
     ItemTitle = scrapy.Field()
     ItemImageURL = scrapy.Field()
     ItemPrice = scrapy.Field()
+    ItemBarcode = scrapy.Field()
 
 
 class SubcategoryItem(scrapy.Item):

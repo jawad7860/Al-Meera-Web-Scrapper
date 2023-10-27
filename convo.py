@@ -1,7 +1,8 @@
-
 import json
 import os
 import urllib.request
+import re
+
 # Create a dictionary to store the transformed data
 transformed_data = {"CategoryTitle": "", "Subcategories": []}
 
@@ -68,29 +69,7 @@ with open('data.jl', 'r') as jsonl_file:#Adding products
                                if i not in j["Products"]:
                                     j["Products"].append(i)
 
-#Downloading images
-download_directory = '.\Images'
 
-# the directory if it doesn't exist
-os.makedirs(download_directory, exist_ok=True)
-
-for i in All_data:
-    subcategories = i["Subcategories"]
-
-    for j in subcategories:
-
-        for k in j["Products"]:
-            if k["ItemImageURL"] != None:
-                filename = os.path.join('.\Images', k["ItemImageURL"].split("/")[-1])
-
-                try:
-                    # Download the image to the specified directory
-                    urllib.request.urlretrieve(k["ItemImageURL"], filename)
-
-                    print(f'Successfully downloaded {filename}')
-                except Exception as e:
-                    print(f'Failed to download {k["ItemImageURL"]}: {e}')
-                                
 
                 
 # Save the transformed data to a new JSON file
