@@ -75,7 +75,7 @@ download_directory = '.\Images'
 os.makedirs(download_directory, exist_ok=True)
 
 for i in All_data:
-    subcategories = itr["Subcategories"]
+    subcategories = i["Subcategories"]
 
     for j in subcategories:
 
